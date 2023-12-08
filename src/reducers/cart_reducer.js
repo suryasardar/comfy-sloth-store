@@ -5,10 +5,12 @@ import {
   REMOVE_CART_ITEM,
   TOGGLE_CART_ITEM_AMOUNT,
 } from '../actions'
+import images from '../assets/images';
 
 const cart_reducer = (state, action) => {
   if (action.type === ADD_TO_CART) {
     const { id, color, amount, product } = action.payload
+    console.log(id,amount,product,"idfj");
     const tempItem = state.cart.find((i) => i.id === id + color)
     if (tempItem) {
       const tempCart = state.cart.map((cartItem) => {
@@ -29,7 +31,7 @@ const cart_reducer = (state, action) => {
         name: product.name,
         color,
         amount,
-        image: product.images[0].url,
+        image: images[id],
         price: product.price,
         max: product.stock,
       }
@@ -81,4 +83,4 @@ const cart_reducer = (state, action) => {
   throw new Error(`No Matching "${action.type}" - action type`)
 }
 
-export default cart_reducer
+export default cart_reducer;

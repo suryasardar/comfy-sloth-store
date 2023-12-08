@@ -1,15 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 import { formatPrice } from '../utils/helpers'
+import heroBcg2 from '../assets/product-2.jpeg'
 import { Link } from 'react-router-dom'
-const ListView = ({ products }) => {
-  return (
+ 
+
+const ListView = ({ products,images }) => {
+   
+  return ( 
     <Wrapper>
       {products.map((product) => {
-        const { id, image, name, price, description } = product
+        const { id, name, price, description } = product;
+        const productImage = images[id % images.length];
+        
         return (
           <article key={id}>
-            <img src={image} alt={name} />
+            <img src={productImage} alt={name} />
             <div>
               <h4>{name}</h4>
               <h5 className='price'>{formatPrice(price)}</h5>

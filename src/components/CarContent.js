@@ -1,13 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useEffect } from 'react'
 import { useCartContext } from '../context/cart_context'
 import { Link } from 'react-router-dom'
 import CartColumns from './CartColumns'
 import CartItem from './CartItem'
 import CartTotals from './CartTotals'
-const CartItems = () => {
-  const { cart, clearCart } = useCartContext()
+import {useNavigate } from 'react-router-dom';
 
+const CartContent = () => {
+  const navigate = useNavigate();
+  const { cart, clearCart } = useCartContext()
+  // useEffect(() => {
+  //     if (localStorage.getItem('token')) {
+  //       navigate('/Cart');
+  //   }else{
+      
+  //     alert('please login!')
+  //     }
+  //    },[])
   return (
     <Wrapper className='section section-center'>
       <CartColumns />
@@ -53,4 +64,4 @@ const Wrapper = styled.section`
     background: var(--clr-black);
   }
 `
-export default CartItems
+export default CartContent;

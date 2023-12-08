@@ -11,14 +11,29 @@ import {
 const getLocalStorage = () => {
   let cart = localStorage.getItem('cart')
   if (cart) {
-    return JSON.parse(localStorage.getItem('cart'))
+    try {
+      // Try parsing the JSON, and return an empty array if it fails
+      return JSON.parse(cart) || [];
+    } catch (error) {
+      console.error('Error parsing cart from localStorage:', error);
+      return [];
+    }
   } else {
-    return []
+    return [];
   }
 }
+// const getLocalStorage = () => {
+//   let cart = localStorage.getItem('cart')
+//   if (cart) {
+//     return JSON.parse(localStorage.getItem('cart'))
+//   } else {
+//     return []
+//   }
+// }
 
 const initialState = {
   cart: getLocalStorage(),
+  // carts:[],
   total_items: 0,
   total_amount: 0,
   shipping_fee: 534,
@@ -52,8 +67,9 @@ export const CartProvider = ({ children }) => {
   }
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(state.cart))
+    // carts:[JSON.stringify(state.carts)]
     dispatch({ type: COUNT_CART_TOTALS })
-  }, [state.cart])
+  }, [state.carts])
   return (
     <CartContext.Provider
       value={{ ...state, addToCart, removeItem, toggleAmount, clearCart }}

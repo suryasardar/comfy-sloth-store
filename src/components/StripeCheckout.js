@@ -137,9 +137,9 @@ const CheckoutForm = () => {
 const StripeCheckout = () => {
   return (
     <Wrapper>
-      <Elements stripe={promise}>
+      {/* <Elements stripe={promise}>
         <CheckoutForm />
-      </Elements>
+      </Elements> */}
     </Wrapper>
   );
 };

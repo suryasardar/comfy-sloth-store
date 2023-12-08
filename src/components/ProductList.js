@@ -2,9 +2,10 @@ import React from 'react'
 import { useFilterContext } from '../context/filter_context'
 import GridView from './GridView'
 import ListView from './ListView'
+import images from '../assets/images'
 const ProductList = () => {
   const { filtered_products: products, grid_view } = useFilterContext()
-
+ 
   if (products.length < 1) {
     return (
       <h5 style={{ textTransform: 'none' }}>
@@ -14,9 +15,9 @@ const ProductList = () => {
   }
 
   if (grid_view === false) {
-    return <ListView products={products} />
+    return <ListView products={products} images={images} />
   }
-  return <GridView products={products} />
+  return <GridView products={products}  />
 }
 
 export default ProductList

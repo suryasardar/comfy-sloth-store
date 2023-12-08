@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-const ProductImages = ({ images = [[]] }) => {
-  const [main, setMain] = useState(images[0])
+const ProductImages = ({ images,id,imageurl}) => {
+  const [main, setMain] = useState(images[id])
+  const [img,setimg]=useState([])
+  console.log(main, "oj");
+  console.log(id,"lkjn");
   return (
     <Wrapper>
-      <img src={main.url} alt='' className='main ' />
+      <img src={main} alt='' className='main ' />
       <div className='gallery'>
-        {images.map((image, index) => {
+        {imageurl.map((image, index) => {
           return (
             <img
-              src={image.url}
+              src={image}
               alt=''
               key={index}
-              className={`${image.url === main.url ? 'active' : null}`}
-              onClick={() => setMain(images[index])}
+              className={`${image === main ? 'active' : null}`}
+              onClick={() => setimg(image[index])}
             />
           )
         })}

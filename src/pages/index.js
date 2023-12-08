@@ -7,6 +7,8 @@ import Error from './ErrorPage'
 import Checkout from './CheckoutPage'
 import PrivateRoute from './PrivateRoute'
 import AuthWrapper from './AuthWrapper'
+import Logins from './LoginPage'
+import Sign from './SignUpPage'
 export {
   Home,
   SingleProduct,
@@ -17,4 +19,6 @@ export {
   Products,
   PrivateRoute,
   AuthWrapper,
+  Logins,
+  Sign,
 }

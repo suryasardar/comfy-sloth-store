@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { FaCheck } from 'react-icons/fa'
+ 
 import { useCartContext } from '../context/cart_context'
 import AmountButtons from './AmountButtons'
 const AddToCart = ({ product }) => {
@@ -10,7 +11,14 @@ const AddToCart = ({ product }) => {
   const { id, stock, colors } = product
   const [mainColor, setMainColor] = useState(colors[0])
   const [amount, setAmount] = useState(1)
-
+   
+  const colorsArray = JSON.parse(colors);
+  // useEffect(() => {
+  //   if (localStorage.getItem('token')) {
+  //     navigate('/cart');
+  //     alert('please login!')
+  //    }
+  //  },[])
   const increase = () => {
     setAmount((oldAmount) => {
       let tempAmount = oldAmount + 1
@@ -34,7 +42,7 @@ const AddToCart = ({ product }) => {
       <div className='colors'>
         <span>colors :</span>
         <div>
-          {colors.map((color, index) => {
+          {colorsArray.map((color, index) => {
             return (
               <button
                 key={index}
@@ -58,7 +66,7 @@ const AddToCart = ({ product }) => {
         />
 
         <Link
-          to='/cart'
+          to='/Cart'
           className='btn'
           onClick={() => addToCart(id, mainColor, amount, product)}
         >

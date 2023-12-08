@@ -1,43 +1,43 @@
-import React from 'react'
-import { FaShoppingCart, FaUserMinus, FaUserPlus } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import { useProductsContext } from '../context/products_context'
-import { useCartContext } from '../context/cart_context'
-import { useUserContext } from '../context/user_context'
-const CartButton = () => {
-  const { closeSidebar } = useProductsContext()
-  const { total_items, clearCart } = useCartContext()
-  const { loginWithRedirect, myUser, logout } = useUserContext()
+import React from "react";
+import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+ 
+import { useProductsContext } from "../context/products_context";
+import { useCartContext } from "../context/cart_context";
+import { useUserContext } from "../context/user_context";
+
+const CartButtons = () => {
+  const { closeSidebar } = useProductsContext();
+  // const { loginWithRedirect, logout, myUser } = useUserContext();
+  // console.log(loginWithRedirect, "main");
   return (
-    <Wrapper className='cart-btn-wrapper'>
-      <Link to='/cart' className='cart-btn' onClick={closeSidebar}>
-        Cart
-        <span className='cart-container'>
+    <Wrapper className="cart-btn-wrapper">
+      <Link to="/carts" className="cart-btn" onClick={closeSidebar}>
+        cart
+        <span className="cart-container">
           <FaShoppingCart />
-          <span className='cart-value'>{total_items}</span>
+          <span className="cart-value"> 0</span>
         </span>
       </Link>
-      {myUser ? (
+      {/* {myUser ? (
         <button
-          type='button'
-          className='auth-btn'
-          onClick={() => {
-            clearCart()
-            localStorage.removeItem('user')
-            logout({ returnTo: window.location.origin })
-          }}
+          className="auth-btn"
+          onClick={() => logout({ return: window.location.origin })}
         >
-          Logout <FaUserMinus />
+          Login out
+          <FaUserMinus />
         </button>
-      ) : (
-        <button type='button' className='auth-btn' onClick={loginWithRedirect}>
-          Login <FaUserPlus />
-        </button>
-      )}
+      ) : ( */}
+      <Link to='/Logins' >
+      <button type="button" className="auth-btn">
+        Login <FaUserPlus />
+      </button>
+      </Link>
+      {/* )} */}
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.div`
   display: grid;
@@ -91,5 +91,5 @@ const Wrapper = styled.div`
       margin-left: 5px;
     }
   }
-`
-export default CartButton
+`;
+export default CartButtons;
