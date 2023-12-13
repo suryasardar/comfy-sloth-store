@@ -28,18 +28,81 @@ const LoginForm = styled.form`
 `;
 
 const InputField = styled.input`
-  margin-bottom: 10px;
-  padding: 8px;
-  font-size: 16px;
+margin-bottom: 10px;
+// padding: 8px;
+// font-size: 16px;
+border: 2px solid #e8e8e8;
+padding: 15px;
+border-radius: 10px;
+background-color: #212121;
+font-size: small;
+font-weight: bold;
+text-align: center;
+}
+
+&:focus {
+outline-color: white;
+background-color: #212121;
+color: #e8e8e8;
+box-shadow: 5px 5px #888888;
+}
 `;
 
 const SubmitButton = styled.button`
-padding: 2px;
-font-size: 16px;
-background-color: #ff41ed;
-border-radius:4px;
-color: #fff;
+--color: #ff41ed;
+margin-bottom: 5px;
+padding: 0.8em 1.7em;
+background-color: transparent;
+border-radius: .3em;
+position: relative;
+overflow: hidden;
 cursor: pointer;
+transition: .5s;
+font-weight: 400;
+font-size: 17px;
+border: 1px solid;
+font-family: inherit;
+text-transform: uppercase;
+color: var(--color);
+z-index: 1;
+
+&::before,
+&::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: var(--color);
+  transition: 1s ease;
+}
+
+&::before {
+  top: -1em;
+  left: -1em;
+}
+
+&::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+&:hover::before,
+&:hover::after {
+  height: 410px;
+  width: 410px;
+}
+
+&:hover {
+  color: rgb(10, 25, 30);
+}
+
+&:active {
+  filter: brightness(.8);
+}
 `;
 
 const  Signup = () => {

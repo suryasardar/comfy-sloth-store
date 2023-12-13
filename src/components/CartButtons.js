@@ -2,6 +2,7 @@ import React from "react";
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
  
 import { useProductsContext } from "../context/products_context";
 import { useCartContext } from "../context/cart_context";
@@ -9,32 +10,39 @@ import { useUserContext } from "../context/user_context";
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext();
-  // const { loginWithRedirect, logout, myUser } = useUserContext();
-  // console.log(loginWithRedirect, "main");
+  const userToken = localStorage.getItem('token');
+  const isLoggedIn = !!userToken;
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear the token from localStorage
+    localStorage.removeItem('token');
+
+    // Redirect to the home page
+    navigate('/');
+  };
+
   return (
     <Wrapper className="cart-btn-wrapper">
       <Link to="/carts" className="cart-btn" onClick={closeSidebar}>
-        cart
         <span className="cart-container">
           <FaShoppingCart />
           <span className="cart-value"> 0</span>
         </span>
       </Link>
-      {/* {myUser ? (
-        <button
-          className="auth-btn"
-          onClick={() => logout({ return: window.location.origin })}
-        >
-          Login out
-          <FaUserMinus />
-        </button>
-      ) : ( */}
-      <Link to='/Logins' >
-      <button type="button" className="auth-btn">
-        Login <FaUserPlus />
-      </button>
+       
+      <Link to={isLoggedIn ? '/' : '/Logins'}>
+        {isLoggedIn ? (
+          <button type="button" className="auth-btn" onClick={handleLogout}>
+            Logout <FaUserMinus />
+          </button>
+        ) : (
+          <button type="button" className="auth-btn">
+            Login <FaUserPlus />
+          </button>
+        )}
       </Link>
-      {/* )} */}
     </Wrapper>
   );
 };

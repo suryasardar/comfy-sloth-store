@@ -10,6 +10,7 @@ import {
 
 const getLocalStorage = () => {
   let cart = localStorage.getItem('cart')
+  console.log(cart,"ok");
   if (cart) {
     try {
       // Try parsing the JSON, and return an empty array if it fails
