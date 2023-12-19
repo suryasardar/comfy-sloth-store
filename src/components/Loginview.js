@@ -174,5 +174,125 @@ const Login = () => {
     </LoginPageContainer>
   );
 };
+// const Container = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   background-color: #e9e2d0; 
+//   align-items: center;
+//   height: 100vh;
+//   // background-image: url('/path/to/your/blurred-background.jpg');
+//   background-size: cover;
+//   background-position: center;
+//   // filter: blur(5px);
+// `;
 
+// const LoginForm = styled.form`
+//   width: 400px;
+//   padding: 30px;
+//   background-color: #fff;
+//   border-radius: 5px;
+//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+// `;
+
+// const Title = styled.h1`
+//   text-align: center;
+//   font-size: 24px;
+//   margin-bottom: 20px;
+// `;
+
+// const InputField = styled.div`
+//   margin-bottom: 15px;
+// `;
+
+// const Label = styled.label`
+//   display: block;
+//   font-size: 16px;
+//   margin-bottom: 5px;
+// `;
+
+// const Input = styled.input`
+//   width: 100%;
+//   padding: 10px;
+//   border: 1px solid #ddd;
+//   border-radius: 3px;
+//   font-size: 16px;
+// `;
+
+// const Checkbox = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   margin-bottom: 15px;
+// `;
+
+// const CheckboxLabel = styled.label`
+//   font-size: 14px;
+// `;
+
+// const ForgotPasswordLink = styled.a`
+//   color: #333;
+//   text-decoration: none;
+// `;
+
+// const Button = styled.button`
+//   background-color: #4caf50;
+//   color: #fff;
+//   padding: 10px 15px;
+//   border: none;
+//   border-radius: 3px;
+//   font-size: 16px;
+//   cursor: pointer;
+//   transition: background-color 0.2s ease-in-out;
+
+//   &:hover {
+//     background-color: #3e8e41;
+//   }
+// `;
+
+// const Login = () => {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     // handle login logic here using email and password
+//     console.log(`Email: ${email}, Password: ${password}`);
+//   };
+
+//   return (
+//     <Container>
+//     <LoginForm onSubmit={handleSubmit}>
+//       <Title>Login</Title>
+//       <InputField>
+//         <Label htmlFor="email">Email ID</Label>
+//         <Input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+//       </InputField>
+//       <InputField>
+
+        
+// <Label
+
+// htmlFor="password">Password</Label>
+
+        
+// <Input
+
+// type="password"
+
+// id="password"
+
+// value={password}
+
+// onChange={(e) => setPassword(e.target.value)} required />
+//       </InputField>
+//       <Checkbox>
+//         <CheckboxLabel>
+//           <input type="checkbox" id="remember-me" /> Remember me
+//         </CheckboxLabel>
+//         <ForgotPasswordLink href="#">Forgot Password?</ForgotPasswordLink>
+//       </Checkbox>
+//       <Button type="submit">LOGIN</Button>
+//     </LoginForm>
+//   </Container>
+//   );
+// }
 export default Login;

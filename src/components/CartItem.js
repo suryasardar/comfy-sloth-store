@@ -4,14 +4,44 @@ import { formatPrice } from '../utils/helpers'
 import AmountButtons from './AmountButtons'
 import { FaTrash } from 'react-icons/fa'
 import { useCartContext } from '../context/cart_context'
+import axios from 'axios'
 const CartItem = ({ id, image, name, color, price, amount }) => {
-  const { removeItem, toggleAmount } = useCartContext()
+  const { removeItem, toggleAmount } = useCartContext();
+
   const increase = () => {
-    toggleAmount(id, 'inc')
-  }
+    toggleAmount(id, 'inc');
+    // Assuming you have an API endpoint for updating the cart on the server
+    // updateCartItemOnServer({ id, amount: amount + 1 });
+  };
+
   const decrease = () => {
-    toggleAmount(id, 'dec')
-  }
+    toggleAmount(id, 'dec');
+    // Assuming you have an API endpoint for updating the cart on the server
+    // updateCartItemOnServer({ id, amount: amount - 1 });
+  };
+
+  // const updateCartItemOnServer = async (updatedCartItem) => {
+  //   try {
+  //     // Exclude 'id' and 'image' properties from the updatedCartItem
+  //     const { id, image, ...cartItemWithoutIdAndImage } = updatedCartItem;
+
+  //     const response = await axios.post('http://localhost:4000/apis/cart',updatedCartItem,{
+  //       name,color,price,amount
+  //     });
+  //   console.log('Response:', response.data);
+
+  //   // Print a success message
+  //   console.log('Successfully posted');
+  //     // if (!response.ok) {
+  //     //   throw new Error('Failed to update cart item on the server');
+  //     // }
+
+  //     // Handle successful response if needed
+  //   } catch (error) {
+  //     console.error('Error updating cart item on the server:', error.message);
+  //     // Handle error
+  //   }
+  // };
   return (
     <Wrapper>
       <div className='title'>
@@ -28,7 +58,7 @@ const CartItem = ({ id, image, name, color, price, amount }) => {
       <h5 className='price'>{formatPrice(price)}</h5>
       <AmountButtons amount={amount} increase={increase} decrease={decrease} />
       <h5 className='subtotal'>{formatPrice(price * amount)}</h5>
-      <button className='remove-btn' onClick={() => removeItem(id)}>
+      <button className='remove-btn' onClick={() => removeItem(name)}>
         <FaTrash />
       </button>
     </Wrapper>

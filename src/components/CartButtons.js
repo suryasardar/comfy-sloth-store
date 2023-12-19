@@ -38,7 +38,7 @@ const CartButtons = () => {
             Logout <FaUserMinus />
           </button>
         ) : (
-          <button type="button" className="auth-btn">
+          <button type="button" className="auth-btn" onClick={closeSidebar} >
             Login <FaUserPlus />
           </button>
         )}

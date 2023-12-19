@@ -19,6 +19,7 @@ const CartContent = () => {
   //     alert('please login!')
   //     }
   //    },[])
+  console.log(cart,"raci");
   return (
     <Wrapper className='section section-center'>
       <CartColumns />
