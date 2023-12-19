@@ -1,0 +1,17 @@
+version: '3'
+services:
+  backend:
+    image: ecommerce
+    ports:
+      - "4000:4000"
+    depends_on:
+      - API
+    environment:
+      - .env
+  API:
+    image: mysql:latest
+    env_file:
+      - .env
+    ports:
+      - "3307:3306"
+
